@@ -1,0 +1,22 @@
+#include <bits/stdc++.h> 
+int uniqueSubstrings(string s)
+{
+    //Write your code here
+     if(s.size() == 0) return 0;
+        map<char, int> last_occ;
+        int n = s.size();
+        int ans = 1;
+        int last = 0;
+        for(int i = 0; i < n; i++) {
+            if(last_occ.find(s[i]) != last_occ.end()) {
+                last = max(last, last_occ[s[i]] + 1);
+                last_occ[s[i]] = i;
+            }
+            else {
+                ans = max(ans, i - last + 1);
+                last_occ[s[i]] = i;
+            }
+            ans = max(ans, i - last + 1);
+        }
+        return ans;
+}
