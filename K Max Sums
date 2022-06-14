@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+vector<int> kMaxSumCombination(vector<int> &a, vector<int> &b, int n, int k){
+	// Write your code here.
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
+    vector<int> ans;
+    int i = n - 1;
+    int cnt = k;
+    while(cnt--) {
+        ans.push_back(a[i] + b[i]);
+        i--;
+    }
+  //  reverse(ans.begin(), ans.end());
+    return ans;
+}
