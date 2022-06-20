@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+string reverseString(string str)
+{
+    // Write your code here.
+    int n = str.size();
+    vector<string> arr;
+    for(int i = 0; i < n; i++) {
+        if(str[i] == ' ') continue;
+        int j = i;
+        string temp;
+        while(j < n && str[j] != ' ') {
+            temp.push_back(str[j++]);
+        }
+        j++;
+        arr.push_back(temp);
+        i = j - 1;
+    }
+    reverse(arr.begin(), arr.end());
+    string ans = "";
+    for(auto it: arr) {
+        ans += it + " ";
+    }
+    return ans;
+    
+    
+}
