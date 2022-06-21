@@ -1,0 +1,41 @@
+/************************************************************
+
+    Following is the BinaryTreeNode class structure
+
+    template <typename T>
+    class BinaryTreeNode {
+       public:
+        T val;
+        BinaryTreeNode<T> *left;
+        BinaryTreeNode<T> *right;
+
+        BinaryTreeNode(T val) {
+            this->val = val;
+            left = NULL;
+            right = NULL;
+        }
+    };
+
+************************************************************/
+vector<int> getLevelOrder(BinaryTreeNode<int> *root)
+{
+     if(root == NULL) return {};
+    //  Write your code here.
+    queue<BinaryTreeNode<int>*> q;
+    vector<int> res;
+    
+    q.push(root);
+    while(q.size() > 0) {
+        int n = q.size();
+        for(int i = 0; i < n; i++) {
+             BinaryTreeNode<int>* f = q.front();
+          q.pop();
+       
+        res.push_back(f->val);
+        if(f->left) q.push(f->left);
+        if(f->right) q.push(f->right);
+        }
+       
+    }
+    return res;
+}
